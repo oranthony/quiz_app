@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   //double screenWidth = 600;
   //double screenHeight = 400;
@@ -30,11 +31,11 @@ class HomePage extends StatelessWidget {
             const Spacer(),
             Image.asset(
               'assets/images/quiz_illustration.png',
-              height: 200,
+              height: 180,
             ),
             const Spacer(),
             Container(
-                margin: const EdgeInsets.only(bottom: 40),
+                margin: const EdgeInsets.only(bottom: 50),
                 child: TextButton(
                     style: ButtonStyle(
                         padding: MaterialStateProperty.all<EdgeInsets>(
@@ -52,7 +53,7 @@ class HomePage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(40.0),
                                     side:
                                         const BorderSide(color: Colors.blue)))),
-                    onPressed: () => null,
+                    onPressed: () => context.push('/category'),
                     child: Text("Start".toUpperCase(),
                         style: const TextStyle(fontSize: 24))))
           ]),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/utils/app_colors.dart';
 
 class BlinkAnimation extends StatefulWidget {
   const BlinkAnimation({super.key, required this.child});
@@ -9,6 +10,7 @@ class BlinkAnimation extends StatefulWidget {
   State<BlinkAnimation> createState() => BlinkAnimationState();
 }
 
+// State is not private because used for GlobalKey in GameScreen
 class BlinkAnimationState extends State<BlinkAnimation>
     with SingleTickerProviderStateMixin {
   late Animation<Color?> animationGreen;
@@ -18,13 +20,17 @@ class BlinkAnimationState extends State<BlinkAnimation>
 
   final colors = <TweenSequenceItem<Color?>>[
     TweenSequenceItem(
-        tween: ColorTween(begin: Colors.white, end: Colors.red), weight: 1),
+        tween: ColorTween(begin: Colors.white, end: AppColors.falseColor),
+        weight: 1),
     TweenSequenceItem(
-        tween: ColorTween(begin: Colors.red, end: Colors.white), weight: 1),
+        tween: ColorTween(begin: AppColors.falseColor, end: Colors.white),
+        weight: 1),
     TweenSequenceItem(
-        tween: ColorTween(begin: Colors.white, end: Colors.red), weight: 1),
+        tween: ColorTween(begin: Colors.white, end: AppColors.falseColor),
+        weight: 1),
     TweenSequenceItem(
-        tween: ColorTween(begin: Colors.red, end: Colors.white), weight: 1),
+        tween: ColorTween(begin: AppColors.falseColor, end: Colors.white),
+        weight: 1),
   ];
 
   @override
@@ -37,8 +43,8 @@ class BlinkAnimationState extends State<BlinkAnimation>
     );
     final CurvedAnimation curve =
         CurvedAnimation(parent: controller, curve: Curves.easeInOutBack);
-    animationGreen =
-        ColorTween(begin: Colors.white, end: Colors.green).animate(curve);
+    animationGreen = ColorTween(begin: Colors.white, end: AppColors.trueColor)
+        .animate(curve);
     animationRed = TweenSequence<Color?>(colors).animate(controller);
 
     controller.addListener(() {

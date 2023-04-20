@@ -10,7 +10,12 @@ dependencies:
   flutter:
     sdk: flutter
   go_router: ^6.4.1
+  html_unescape: ^2.0.0
+  http: ^0.13.5
   lottie: ^2.3.1
+  provider: ^6.0.5
+  shared_preferences: ^2.1.0
+  wave: ^0.2.2
 
 dev_dependencies:
   flutter_test:
@@ -23,3 +28,4 @@ flutter:
   assets:
     - assets/images/
     - assets/animations/
+    - assets/test.json

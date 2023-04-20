@@ -1,14 +1,28 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:quiz_app/models/api_token.dart';
+import 'package:quiz_app/models/singletons/token_singleton.dart';
+import 'package:quiz_app/providers.dart';
+import 'package:quiz_app/services/api_service.dart';
 import 'package:quiz_app/src/view/screens/before_quiz_screen.dart';
 import 'package:quiz_app/src/view/screens/category_screen.dart';
+import 'package:quiz_app/src/view/screens/endgame_screen.dart';
 import 'package:quiz_app/src/view/screens/game_screen.dart';
 import 'package:quiz_app/src/view/screens/home_screen.dart';
 import 'package:quiz_app/src/view/screens/test.dart';
-import 'package:quiz_app/utils/ripple.dart';
+import 'package:quiz_app/src/view/widgets/ripple.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => GameSessionProvider()),
+    ],
+    child: const MainApp(),
+  ));
 }
 
 // GoRouter configuration
@@ -16,8 +30,7 @@ final _router = GoRouter(
   routes: [
     GoRoute(
         path: '/',
-        //builder: (context, state) => const HomeScreen(),
-        builder: (context, state) => /*const*/ GameScreen(),
+        builder: (context, state) => const HomeScreen(),
         routes: <RouteBase>[
           GoRoute(
             path: 'category',
@@ -25,6 +38,23 @@ final _router = GoRouter(
               return const CategoryScreen();
             },
           ),
+          GoRoute(
+            path: 'before_quiz',
+            builder: (BuildContext context, GoRouterState state) {
+              return const BeforeQuizScreen();
+            },
+          ),
+          GoRoute(
+            path: 'game_screen',
+            builder: (BuildContext context, GoRouterState state) {
+              return const GameScreen();
+            },
+          ),
+          GoRoute(
+              path: 'endGame',
+              builder: (BuildContext context, GoRouterState state) {
+                return const EndgameScreen();
+              })
         ]),
   ],
 );
@@ -39,6 +69,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColor: Colors.lightBlue[800],
+        //trueColor: Color(0xFF69CE39),
 
         // Define the default font family.
         fontFamily: 'Roboto',

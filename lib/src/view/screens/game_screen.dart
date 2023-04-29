@@ -48,6 +48,14 @@ class _GameScreenState extends State<GameScreen> {
     _gameSessionProvider =
         Provider.of<GameSessionProvider>(context, listen: false);
 
+    if (_gameSessionProvider.questions.responseCode == 1 ||
+        _gameSessionProvider.questions.responseCode == 4) {
+      print("no questions");
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showMyDialog();
+      });
+    }
+
     if (_gameSessionProvider.questions.results != null) {
       _amountOfQuestion = _gameSessionProvider.questions.results!.length;
     }
@@ -62,6 +70,42 @@ class _GameScreenState extends State<GameScreen> {
     } else {
       return "";
     }
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('API Problem'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text("We don't have anymore questions for this category."),
+                Text('Please go back and choose another category.'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Go back'),
+              onPressed: () {
+                // Dissmiss modal
+                Navigator.of(context).pop();
+                // Go back to category screen to pick up another category
+                context.go('/category');
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _finishGame() {
+    _gameSessionProvider.score = _score;
+    context.push('/endGame');
   }
 
   @override
@@ -104,24 +148,27 @@ class _GameScreenState extends State<GameScreen> {
             if (_gameSessionProvider.questions
                     .results![_gameSessionProvider.step].correctAnswer ==
                 "True") {
+              // Good answer
               rippleKey.currentState?.isWrong = false;
               _score++;
             } else {
+              // Wrong answer
               rippleKey.currentState?.isWrong = true;
             }
-
+            // Start animation
             rippleKey.currentState?.startAnimation();
             setState(() {
               _visible = !_visible;
             });
 
             Future.delayed(_delaybetweenQuestion, () {
-              // <-- Delay here
+              // <-- delay to wait the end of animation
               setState(() {
                 if (_gameSessionProvider.step == _amountOfQuestion - 1) {
-                  _gameSessionProvider.score = _score;
-                  context.push('/endGame');
+                  // Game is over
+                  _finishGame();
                 } else {
+                  // Go nto next question
                   _gameSessionProvider.incrementStep();
                   _visible = !_visible;
                 }
@@ -132,21 +179,26 @@ class _GameScreenState extends State<GameScreen> {
             if (_gameSessionProvider.questions
                     .results![_gameSessionProvider.step].correctAnswer ==
                 "True") {
+              // Wrong answer
               rippleKey.currentState?.isWrong = true;
             } else {
+              // Good answer
               rippleKey.currentState?.isWrong = false;
               _score++;
             }
+            // Start animation
             rippleKey.currentState?.startAnimation();
             setState(() {
               _visible = !_visible;
             });
             Future.delayed(_delaybetweenQuestion, () {
+              // <-- delay to wait the end of animation
               setState(() {
                 if (_gameSessionProvider.step == _amountOfQuestion - 1) {
-                  _gameSessionProvider.score = _score;
-                  context.push('/endGame');
+                  // Game is over
+                  _finishGame();
                 } else {
+                  // Go to next question
                   _gameSessionProvider.incrementStep();
                   _visible = !_visible;
                 }

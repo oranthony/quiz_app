@@ -52,7 +52,9 @@ class _BeforeQuizScreenState extends State<BeforeQuizScreen> {
                 style: TextStyle(fontSize: 16)),
           ),
           const Spacer(),
-          Lottie.asset('assets/animations/select-animation.json'),
+          SizedBox(
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: Lottie.asset('assets/animations/select-animation.json')),
           Container(
             padding: const EdgeInsets.only(top: 25),
             child: Column(

@@ -4,6 +4,14 @@ Quiz Up is a Trivia quiz app that runs on iOS, Android and Web. Available on the
 
 https://user-images.githubusercontent.com/6161861/235632106-55fcc4e5-650c-446b-b63d-dd9cf0c3c959.mov
 
-Solarized dark              |  Solarized Ocean         |  Solarized Ocean         |  Solarized Ocean         |
-:--------------------------:|:------------------------:|:------------------------:|:-------------------------:
-![](./doc/screen-record.mov)| ![](./doc/screen-1.png)  | ![](./doc/screen-2.png)  | ![](./doc/screen-3.png)  |
+
+<p float="left">
+  <video width="320" height="240" controls>
+  <source src="./doc/screen-record.mp4" type="video/mp4">
+  </video>
+  <img src="./doc/screen-1.png" width="100" />
+  <img src="./doc/screen-2.png" width="100" /> 
+  <img src="./doc/screen-3.png" width="100" />
+</p>
+
+![](./doc/screen-record.mov) ![](./doc/screen-1.png) ![](./doc/screen-2.png) ![](./doc/screen-3.png)

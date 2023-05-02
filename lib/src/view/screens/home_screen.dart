@@ -8,9 +8,6 @@ class HomeScreen extends StatefulWidget {
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
-
-  //double screenWidth = 600;
-  //double screenHeight = 400;
 }
 
 class _HomeScreenState extends State<HomeScreen> with TokenHandler {
@@ -19,15 +16,11 @@ class _HomeScreenState extends State<HomeScreen> with TokenHandler {
   @override
   void initState() {
     super.initState();
-    print('before init' '${TokenSingleton.getState().timeStamp}');
-    print('before init' '${TokenSingleton.getState().token}');
     retreiveOrGenerateToken().then((value) {
       if (value == null) {
         const AlertDialog(title: Text("Internet problem connection"));
       } else {
         generateTokenSingleton(value.token, DateTime.parse(value.timeStamp));
-        print('after init' '${TokenSingleton.getState().timeStamp}');
-        print('after init' '${TokenSingleton.getState().token}');
         setState(() {
           _isTokenLoaded = true;
         });

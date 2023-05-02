@@ -61,13 +61,6 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    _gameSessionProvider.dispose();
-  }
-
   String _getQuestion() {
     if (_gameSessionProvider.questions.results != null) {
       return _gameSessionProvider.questions.results!.isNotEmpty

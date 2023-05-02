@@ -7,7 +7,7 @@ https://user-images.githubusercontent.com/6161861/235632106-55fcc4e5-650c-446b-b
 
 <p float="left">
   <video width="320" height="240" controls>
-  <source src="./doc/screen-record.mp4" type="video/mp4">
+  <source src="https://user-images.githubusercontent.com/6161861/235642354-7cd07e26-a9aa-4959-820d-aeb86f499710.mp4" type="video/mp4">
   </video>
   <img src="./doc/screen-1.png" width="100" />
   <img src="./doc/screen-2.png" width="100" /> 

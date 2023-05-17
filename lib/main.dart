@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_app/models/api_token.dart';
@@ -12,7 +13,6 @@ import 'package:quiz_app/src/view/screens/category_screen.dart';
 import 'package:quiz_app/src/view/screens/endgame_screen.dart';
 import 'package:quiz_app/src/view/screens/game_screen.dart';
 import 'package:quiz_app/src/view/screens/home_screen.dart';
-import 'package:quiz_app/src/view/screens/test.dart';
 import 'package:quiz_app/src/view/widgets/ripple.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -64,29 +64,29 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: _router,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.lightBlue[800],
-        //trueColor: Color(0xFF69CE39),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark,
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        routerConfig: _router,
+        theme: ThemeData(
+          //brightness: Brightness.light,
+          primaryColor: Colors.lightBlue[800],
+          //trueColor: Color(0xFF69CE39),
 
-        // Define the default font family.
-        fontFamily: 'Roboto',
+          // Define the default font family.
+          fontFamily: 'Roboto',
 
-        // Define the default `TextTheme`. Use this to specify the default
-        // text styling for headlines, titles, bodies of text, and more.
-        textTheme: const TextTheme(
-          displayLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          titleLarge: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-          bodyMedium: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          // Define the default `TextTheme`. Use this to specify the default
+          // text styling for headlines, titles, bodies of text, and more.
+          textTheme: const TextTheme(
+            displayLarge:
+                TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+            titleLarge: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+            bodyMedium: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          ),
         ),
       ),
-      /*home: const Scaffold(
-        body: Center(
-          child: HomePage(),
-        ),
-      ),*/
     );
   }
 }

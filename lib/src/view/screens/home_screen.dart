@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz_app/models/singletons/token_singleton.dart';
 import 'package:quiz_app/utils/token_utils.dart';
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> with TokenHandler {
             Container(
               margin: const EdgeInsets.only(top: 120),
               child: const Text(
-                "Quiz Game",
+                "Quiz Up",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 48,

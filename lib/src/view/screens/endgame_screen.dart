@@ -18,11 +18,11 @@ class _EndgameScreenState extends State<EndgameScreen> {
   late GameSessionProvider _gameSessionProvider;
 
   var _animationHeight = 0.0;
-  var _delayBeforeAnimation = Duration(microseconds: 800);
+  final _delayBeforeAnimation = const Duration(microseconds: 800);
 
-  var _backgroundColor = AppColors.falseColor;
+  final _backgroundColor = AppColors.falseColor;
 
-  var _colors = [
+  final _colors = [
     AppColors.trueColor,
     //Color.fromARGB(255, 87, 200, 30),
   ];
@@ -94,7 +94,7 @@ class _EndgameScreenState extends State<EndgameScreen> {
                       heightPercentages: _heightPercentages,
                     ),
                     backgroundColor: _backgroundColor,
-                    size: Size(double.infinity, double.infinity),
+                    size: const Size(double.infinity, double.infinity),
                     waveAmplitude: 2,
                   ),
                 ),

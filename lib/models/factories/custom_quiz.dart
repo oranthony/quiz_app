@@ -8,9 +8,9 @@ import 'package:quiz_app/providers.dart';
 import 'package:quiz_app/services/api_service.dart';
 
 abstract class CustomQuiz {
+  late GameSessionProvider _gameSessionProvider;
   void getQuestions();
   Uri generateURI();
-  late GameSessionProvider _gameSessionProvider;
 
   CustomQuiz(BuildContext context) {
     initializeProvider(context);

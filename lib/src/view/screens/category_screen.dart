@@ -180,14 +180,7 @@ class _GategoryScreenState extends State<CategoryScreen> {
         ),
         child: TextButton(
             style: ButtonStyle(
-                /*padding: MaterialStateProperty.all<EdgeInsets>(
-                    const EdgeInsets.symmetric(
-                  horizontal: 30,
-                  vertical: 40,
-                )),*/
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                //backgroundColor:
-                //MaterialStateProperty.all<Color>(Colors.blue),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(120.0),

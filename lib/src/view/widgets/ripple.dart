@@ -60,7 +60,6 @@ class BlinkAnimationState extends State<BlinkAnimation>
   }
 
   void startAnimation() {
-    //isWrong = true;
     controller.forward();
   }
 
@@ -81,35 +80,9 @@ class BlinkAnimationState extends State<BlinkAnimation>
                     color: isWrong ? animationRed.value : animationGreen.value,
                     child: Row(children: [
                       Expanded(
-                        //child: Center(child: innerChild),
                         child: Center(child: widget.child),
-                        /*child: TextButton(
-                            onPressed: () {
-                              isWrong = false;
-                              startAnimation();
-                            },
-                            child: Text("ff")),*/
                       ),
-                    ])
-                    /*Column(
-                    children: <Widget>[
-                      TextButton(
-                        onPressed: () {
-                          isWrong = false;
-                          controller.forward();
-                        },
-                        child: const Text('True'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          isWrong = true;
-                          controller.forward();
-                        },
-                        child: const Text('False'),
-                      )
-                    ],
-                  ),*/
-                    ),
+                    ])),
               )
             ],
           );

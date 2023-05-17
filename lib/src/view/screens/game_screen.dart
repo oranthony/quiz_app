@@ -23,7 +23,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   // Used to keep track of the BlinkAnimation Widget -> the animation is
-  // triggered from GameScreen class
+  // triggered from GameScreen class (allows to access its state from this class)
   final rippleKey = GlobalKey<BlinkAnimationState>();
   // Used for unescaping HTML-encoded strings because of API encoding
   var unescape = HtmlUnescape();

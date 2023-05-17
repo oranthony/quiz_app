@@ -11,8 +11,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 // asked to the API and stored.
 
 mixin TokenHandler<T extends StatefulWidget> on State<T> {
+  // Token is valid for 6 hours
   final int _tokenExpirationDelay = 6;
 
+  // Search for an existing token in storage, if no token found a new one is asked
+  // to the API
   Future<ApiTokenStringified?> retreiveOrGenerateToken() {
     return _retreiveToken().then((tokenFound) {
       if (tokenFound != null) {
@@ -20,12 +23,8 @@ mixin TokenHandler<T extends StatefulWidget> on State<T> {
         var retreivedDate = DateTime.parse(tokenFound.timeStamp);
         var nowDate = DateTime.now();
         var timeDifferene = nowDate.difference(retreivedDate);
-        print(timeDifferene.inHours);
-        print(retreivedDate);
-        // Move to upper finction
         if (timeDifferene.inHours > _tokenExpirationDelay) {
           // Token expired so generates and stores a new one
-          print("token found but expired");
           return _generateAndStoreToken();
         } else {
           // Token found is still valid
@@ -34,29 +33,31 @@ mixin TokenHandler<T extends StatefulWidget> on State<T> {
       } else {
         // If no token found -> generate a token from the api and store it
         return _generateAndStoreToken();
-        // instanciate singleton
       }
     });
   }
 
+  // Instantiate the singleton with the token values
+  void generateTokenSingleton(String token, DateTime timeStamp) {
+    TokenSingleton.getState().timeStamp = timeStamp;
+    TokenSingleton.getState().token = token;
+  }
+
+  // Searches in storage for an existing token and returns it, return null if not found
   Future<ApiTokenStringified?> _retreiveToken() async {
-    SharedPreferences shared_Token = await SharedPreferences.getInstance();
-    var retreivedToken = shared_Token.getString('token');
+    SharedPreferences sharedToken = await SharedPreferences.getInstance();
+    var retreivedToken = sharedToken.getString('token');
     if (retreivedToken != null) {
-      print("token found");
       Map<String, dynamic> userMap = jsonDecode(retreivedToken);
       return ApiTokenStringified.fromJson(userMap);
     } else {
-      print("token not found");
       return null;
     }
   }
 
+  // Get token from API, store it in shared_preferences and return it as value
   Future<ApiTokenStringified?> _generateAndStoreToken() {
-    // Get token from API
-    // Store it in shared_preferences
     return ApiService().getToken().then((apiToken) {
-      /*print(apiToken.token.toString())*/
       var stringifiedDate = DateTime.now().toIso8601String();
       ApiTokenStringified apiTokenStringified = ApiTokenStringified(
           token: apiToken.token.toString(), timeStamp: stringifiedDate);
@@ -65,11 +66,7 @@ mixin TokenHandler<T extends StatefulWidget> on State<T> {
     });
   }
 
-  void generateTokenSingleton(String token, DateTime timeStamp) {
-    TokenSingleton.getState().timeStamp = timeStamp;
-    TokenSingleton.getState().token = token;
-  }
-
+  // Store a given token to SharedPreferences
   Future<void> _storeToken(ApiTokenStringified token) async {
     // Transform ApiToekn into ApiTokenStringified
     SharedPreferences sharedUser = await SharedPreferences.getInstance();

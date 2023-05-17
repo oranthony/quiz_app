@@ -1,6 +1,16 @@
 # quiz_app
  
-Quiz Up is a Trivia quiz app that runs on iOS, Android and Web. Available on the Apple App Store and the Google Play Store here: http://linktr.ee/quiz_up
+Quiz Up is a Trivia quiz app that runs on iOS, Android and Web. 
+
+App Store download
+==================
+You can download Quiz Up directly from [all stores](http://linktr.ee/quiz_up) or try it online. If you are seeing this page on a computer, use the camera in your iPhone to scan the QR code to the right.
+
+<p align="center">
+  <img align="right" src="./doc/qr-code-linktree.png" width="180" height="180">
+</p>
+
+---
 
 https://user-images.githubusercontent.com/6161861/235642354-7cd07e26-a9aa-4959-820d-aeb86f499710.mp4
 

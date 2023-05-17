@@ -6,9 +6,9 @@ https://user-images.githubusercontent.com/6161861/235642354-7cd07e26-a9aa-4959-8
 
 
 <p float="left">
-  <img src="./doc/screen-1.png" width="300" />
-  <img src="./doc/screen-2.png" width="300" /> 
-  <img src="./doc/screen-3.png" width="300" />
+  <img src="./doc/screen-1.png" width="220" />
+  <img src="./doc/screen-2.png" width="220" /> 
+  <img src="./doc/screen-3.png" width="220" />
 </p>
 
 

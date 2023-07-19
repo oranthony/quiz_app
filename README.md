@@ -41,11 +41,23 @@ This app uses Provider as State Management, and SharedPreferences to store data.
 ## Lottie animation
 The app features advanced animations. For instance, the animation that shows how to use the app is made with Lottie. It displayes a finger that swipes Up then Down.
 
+https://github.com/oranthony/quiz_app/assets/6161861/0e420d1d-f622-4028-8426-7fa8371b2bf9
+
+
+
 ## Swipe to answer animation (blinking screen + text fade animation)
 Another place where the app features advanced animations is during the game phase. When a user swipes Up or Dowwn, an animation is triggered to tell the user if his answer was wrong or right. If it's the right answer, the screen blinks once in green and if the answer is wrong the screen blinks twice in red. In the mean time the question fades out and a new one fades in.
 
+
+https://github.com/oranthony/quiz_app/assets/6161861/776a4037-3dcc-42bd-b135-a2a60dc31363
+
+
 ## Score Animation
 The score screen display a nice animation with a wave type animation that fills the screen based on the number of correct answers.
+
+
+https://github.com/oranthony/quiz_app/assets/6161861/34c7a364-9545-41e5-88e6-0cf345edd5d9
+
 
 * * *
 

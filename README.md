@@ -90,7 +90,7 @@ All the functions handling the token retrieval and storage are exposed through a
 I use a singleton to make that token accessible throughout the entire app.
 
 ## Factory Method Design Pattern for Quiz creation
-Once again, to follow the OPEN/CLOSED SOLOID principle, I use a design pattern to make sure that the app can be modular and accepts any type of quiz that can be added down the road. Currently it has simple quiz like General knowledge Quiz, History Quiz, Technology Quiz and Sport Quiz. They all have dedicated settings. For instance the General knowledge quiz is set on easy while History and Technology are set to medium difficulty and Sport has no difficulty specified because it has so little questions that i would run out of questions too quickly. Having a Factory Method to handle the creation of quiz allow me to encapsulate the logic of the creation of each quiz (like for the difficulty for example) but also brings more modularity if a new type of quiz must be added. Indeed, with such an approach, the existing code base barely need to be changed if a new quiz has to be added, you just need to add a new item and list it in the factory.
+Once again, to follow the OPEN/CLOSED SOLID principle, I use a design pattern to make sure that the app can be modular and accepts any type of quiz that can be added down the road. Currently it has simple quiz like General knowledge Quiz, History Quiz, Technology Quiz and Sport Quiz. They all have dedicated settings. For instance the General knowledge quiz is set on easy while History and Technology are set to medium difficulty and Sport has no difficulty specified because it has so little questions that i would run out of questions too quickly. Having a Factory Method to handle the creation of quiz allow me to encapsulate the logic of the creation of each quiz (like for the difficulty for example) but also brings more modularity if a new type of quiz must be added. Indeed, with such an approach, the existing code base barely need to be changed if a new quiz has to be added, you just need to add a new item and list it in the factory.
 
 Also the Factory Method is great when we need to create more complex items like multiple quiz (called MegaMix in the App). This kind of quiz is made by merging multiple types of quizzes. For instance, the app features a General MegaMix Quiz which displays 6 easy questions and 4 hard questions. We can also think about MegaMix quizzes that would be a mix of different categories like General knowledge and Sport and Technology. Having a Factory Method makes easy to add any type of MegaMix quiz.
 
@@ -106,3 +106,8 @@ Also the Factory Method is great when we need to create more complex items like 
 ## No polymorphism in Dart :(
 Dart doens't support function overloading which allows to have two functions with the name but different parameters. So I had to create two seperate functions instead of one.  
 ![alt text](./doc/Function-overloading.png "Function overloading")
+
+# Suggestions for a V2
+- Replace the Singleton by Dependency Injection / Serivce Locator like GetIt.
+  - Makes testing easier
+  - Provides a more scallable solution / less coupling

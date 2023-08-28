@@ -103,7 +103,7 @@ Also the Factory Method is great when we need to create more complex items like 
 ## Spread operator
 ![alt text](./doc/Spread-operator.png "Spread operator")
 
-## No polymorphism in Dart :(
+## No polymorphism (function overloading) in Dart :(
 Dart doens't support function overloading which allows to have two functions with the name but different parameters. So I had to create two seperate functions instead of one.  
 ![alt text](./doc/Function-overloading.png "Function overloading")
 
